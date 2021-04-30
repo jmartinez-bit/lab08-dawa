@@ -4,7 +4,12 @@ module.exports = {
     show: function(req, res) {
         modelPost.find({}, function(err, items) {
             if(!err) {
-                res.json(items)
+                let posts = items.map(function(x) {
+                    let {titulo,descripcion,categoria,fecha} = x;
+                    return {titulo,descripcion,categoria,fecha};
+                });
+                
+                res.json(posts);
             }else {
                 res.sendStatus(500);
                 console.log(err);
