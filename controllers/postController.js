@@ -16,18 +16,12 @@ module.exports = {
         let descripcion = req.body.descripcion;
         let categoria = req.body.categoria;
         let fecha = req.body.fecha;
-        let comentarios = {
-            autor: req.body.comentarios.autor,
-            mensaje: req.body.comentarios.mensaje,
-            fecha: req.body.comentarios.fecha,
-        };
 
         let post = new modelPost({
             titulo,
             descripcion,
             categoria,
             fecha,
-            comentarios,
         });
         post.save().then((data) => {
             res.send(data);
